@@ -8,7 +8,7 @@ require './Lexeme.rb'
 
 class Generateur < Gtk::Builder
 	
-	@type = ""
+	@type = ""#article ou beamer
 	@titre = ""
 	@auteur
 	@contenu
@@ -17,7 +17,6 @@ class Generateur < Gtk::Builder
 	@openFrame
 	
 	@previs #fenetre de previsualisation
-	
 	
   def initialize 
     super()
@@ -74,10 +73,7 @@ class Generateur < Gtk::Builder
       @previs = Previs.new(@pileContenu)
       
       self['window1'].show_all
-      @buttonEndFrame.hide
-      @boutonNewFrame.hide
-      @entryFrame.hide
-      @labelFrame.hide
+
       
       
       
@@ -91,22 +87,22 @@ class Generateur < Gtk::Builder
   	@type = @entryType.text
   	@labelType.set_text(@type)
   	if(@type == "beamer")
-      @boutonNewFrame.show
-      @entryFrame.show
-      @labelFrame.show
-      @buttonType.hide
-      @labelSect.label = "Ajouter block"
-      @beamer = true
+      #@boutonNewFrame.show
+      #@entryFrame.show
+      #@labelFrame.show
+      ##@buttonType.hide
+      @labelSect.label = "Ajouter Block"
+      #@beamer = true
       
-      @labelSub.hide
-      @entrySubsection.hide
-      @buttonSubsection.hide
-      
-    else
-    	@buttonEndFrame.hide
-      @boutonNewFrame.hide
-      @entryFrame.hide
-      @labelFrame.hide
+      @labelSub.label = "Ajouter Frame"
+      #@entrySubsection.hide
+      #@buttonSubsection.hide
+    elsif(@type == "article")
+      @labelSect.label = "Ajouter Section"
+      @labelSub.label = "Ajouter Subsection"
+    elsif(@type == "html")
+    	@labelSect.label = "Ajouter <h2>"
+      @labelSub.label = "Ajouter <h3>"
   	end
   	
   end
@@ -121,25 +117,16 @@ class Generateur < Gtk::Builder
   
 
   
-  def addSection()
+  def addPrincipal()
   	texte = @entrySection.text
-  	if(!@beamer)
-  		lexeme = Lexeme.new("section",texte)
-  		@pileContenu.push(lexeme)
-  	else
-  		if(@openBlock)
-  			endBlock
-  		end
-  			lexeme = Lexeme.new("block",texte)
-  			@pileContenu.push lexeme
-  			@openBlock=true
-  	end
+  	lexeme = Lexeme.new("principal",texte)
+  	@pileContenu.push(lexeme)
   	@previs.actualise
   end
   
-  def addSubsection()
+  def addSecondaire()
   	texte = @entrySubsection.text
-  	lexeme = Lexeme.new("subsection",texte)
+  	lexeme = Lexeme.new("secondaire",texte)
   	@pileContenu.push lexeme
   	@previs.actualise
   end
@@ -147,7 +134,7 @@ class Generateur < Gtk::Builder
   def addText()
   	texte = @entryTexte.text
   	@entryTexte.text = ""
-  	lexeme = Lexeme.new("text",texte)
+  	lexeme = Lexeme.new("texte",texte)
   	@pileContenu.push lexeme
   	@previs.actualise
   end
@@ -225,50 +212,36 @@ class Generateur < Gtk::Builder
   	#puts "---------------------------------------------"
   	chaine = ""
   	if((@entryFile.text != ""))
-  	
-  		file = File.new("#{@entryFile.text}.tex","w+")
-  	
-  		chaine += "\\documentclass[12pt,a4paper,twoside]{#{@type}}\n"
-  		chaine += "\\usepackage[T1]{fontenc}\n"
-  		chaine += "\\usepackage[utf8]{inputenc}\n"
-  		chaine += "\\usepackage[francais]{babel}\n"
-  		chaine += "\\usepackage{color}\n"
-  		chaine += "\\usepackage{graphicx}\n"
-  		if(@beamer)
-				chaine += "\\setbeamertemplate{blocks}[rounded][shadow=true]\n"
-				chaine += "\\setbeamercolor{block title}{fg=black,bg=blue}\n"
-				chaine += "\\setbeamertemplate{navigation symbols}{ \\insertslidenavigationsymbol}"
-			end
-  		chaine += "\\begin{document}\n"
-  		chaine += "\\author{#{@auteur}}\\\\\n"
-  		chaine += "\\title{#{@titre}}\n"
-  		chaine += "\\maketitle\n"
-  		#chaine += "\\tableofcontents\n"
-  		if(@openFrame)
-  			endFrame()
+  		if((@type == "article")||(@type == "beamer"))
+				file = File.new("#{@entryFile.text}.tex","w+")
+			
+			elsif(@type == "html") #end if type == latex
+				file = File.new("#{@entryFile.text}.html","w+")
+				
   		end
+  		
+  		#Algo creation du contenu et bornage
+  		Lexeme.langue(@type)
+  		chaine += Lexeme.init(@titre,@auteur)
   		@pileContenu.each{|lex|
   			if(lex.class.to_s == "Lexeme")
-  				chaine += lex.to_s
+  				chaine += lex.to_s()
   			else
   				chaine += lex	
   			end
   			
   		}
+  		chaine += Lexeme.finalise
   		
   		
   		
   		
-  		chaine += "\\end{document}\n"
   		#puts chaine
   		file.puts chaine
   		file.close
   		
   		puts "Fichier construit"  		
   		
-  		
-  		#system "pdflatex #{@entryFile.text}.tex > /dev/null"
-  		#system "gnome-open #{@entryFile.text}.pdf"
   		
   	else
   		puts "Aucun nom de fichier"
@@ -278,6 +251,14 @@ class Generateur < Gtk::Builder
   end
   
   
+  def generateOpen
+  		if(@type == "article"||@type == "beamer")
+				system "pdflatex #{@entryFile.text}.tex > /dev/null"
+				system "gnome-open #{@entryFile.text}.pdf"
+			elsif(@type == "html")
+				system "gnome-open #{@entryFile.text}.html"
+  		end
+  end
   
   def save
   	file = File.new("#{@entryFile.text}.sauv","w+")
@@ -303,7 +284,7 @@ class Generateur < Gtk::Builder
   	while(@pileContenu.size>0)
   		@pileContenu.pop
   	end
-  	@previs.actualise
+
   	
   	arrayTemp.each{|x|
   		@pileContenu.push(x)

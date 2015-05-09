@@ -72,7 +72,7 @@
           <object class="GtkLabel" id="labelSect">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Ajouter Section</property>
+            <property name="label" translatable="yes">Ajouter Principal</property>
           </object>
           <packing>
             <property name="top_attach">3</property>
@@ -103,7 +103,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_action_appearance">False</property>
-            <signal name="clicked" handler="addSection" swapped="no"/>
+            <signal name="clicked" handler="addPrincipal" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -116,8 +116,7 @@
           <object class="GtkLabel" id="labelSub">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Ajouter
-Subsection</property>
+            <property name="label" translatable="yes">Ajouter Secondaire</property>
             <property name="justify">center</property>
           </object>
           <packing>
@@ -149,7 +148,7 @@ Subsection</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_action_appearance">False</property>
-            <signal name="clicked" handler="addSubsection" swapped="no"/>
+            <signal name="clicked" handler="addSecondaire" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -593,51 +592,14 @@ de presentation</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="labelFrame">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Frame</property>
-          </object>
-          <packing>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkHBox" id="hbox3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkEntry" id="entryFrame">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="invisible_char">•</property>
-                <property name="primary_icon_activatable">False</property>
-                <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkButton" id="boutonNewFrame">
-                <property name="label" translatable="yes">New</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
-                <property name="xalign">0.46000000834465027</property>
-                <signal name="clicked" handler="newFrame" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -646,25 +608,6 @@ de presentation</property>
             <property name="top_attach">2</property>
             <property name="bottom_attach">3</property>
           </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="buttonEndFrame">
-            <property name="label" translatable="yes">End</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_action_appearance">False</property>
-            <signal name="clicked" handler="endFrame" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="right_attach">3</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
         <child>
           <object class="GtkHBox" id="hbox4">
@@ -714,6 +657,28 @@ de presentation</property>
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
+            <property name="top_attach">8</property>
+            <property name="bottom_attach">9</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <object class="GtkButton" id="button3">
+            <property name="label" translatable="yes">Ouvrir final</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_action_appearance">False</property>
+            <signal name="clicked" handler="generateOpen" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="right_attach">3</property>
             <property name="top_attach">8</property>
             <property name="bottom_attach">9</property>
           </packing>

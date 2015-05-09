@@ -32,14 +32,14 @@ class Previs
 						@contenu.delete(lex)
 						actualise
 				}
-				if(lex.type == "section" ||lex.type == "frame")
+				if(lex.type == "principal" ||lex.type == "frame")
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(50000, 00, 300))
-				elsif(lex.type == "subsection"||lex.type == "block")
+				elsif(lex.type == "secondaire"||lex.type == "block")
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(300, 00, 50000))
-				elsif(lex.type == "endframe")
-					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(15000, 00, 100))
-				elsif(lex.type == "endblock")
-					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(100, 00, 15000))
+				#elsif(lex.type == "endframe")
+					#button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(15000, 00, 100))
+				#elsif(lex.type == "endblock")
+					#button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(100, 00, 15000))
 				else
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(40000, 40000, 40000))
 				end
