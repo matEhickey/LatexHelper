@@ -1,0 +1,250 @@
+\documentclass[12pt,a4paper,twoside]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{color}
+\usepackage{graphicx}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{fg=black,bg=blue}
+\setbeamertemplate{navigation symbols}{ \insertslidenavigationsymbol}\begin{document}
+\author{Mathias DIDIER}\\
+\title{Java Intro}
+\maketitle
+\begin{frame}
+\frametitle{Plateforme}
+\begin{block}{Organisation en packages}
+-Entrées/sorties(java.io)\\
+Reseaux (java.net)\\
+-UI (java.awt/javax.swing)\\
+-BDD (java.sql)\\
+-Methode d'objet distant (java.rmi)\\
+-Mathematique (java.math)\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Plateforme}
+\end{frame}
+\begin{frame}
+\frametitle{Language Objet}
+\begin{block}{Concept}
+Modularité/Classes\\
+Extensibilité/Heritage\\
+\end{block}
+\begin{block}{Technique}
+-Classes,interfaces,paquetages\\
+-Tout est en classe (Enveloppe pour les géneriques)\\
+-Objets accessibles par references.\\
+-Heritage simple des classes\\
+-Heritage multiple des interfaces\\
+-Polymorphisme\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Rappel}
+\begin{block}{Encapsulation}
+Implémente le masquage d'informations et la modularité\\
+\end{block}
+\begin{block}{Polymorphisme}
+Permet a 2 objets d'obtenir un comportement different a un meme signal.\\
+\end{block}
+\begin{block}{Heritage}
+On peut définir de nouvelles classes basées sur des classes existantes, pour obtenir du code réutilisable et de l'organisation. \\
+envoyer des messages à des objets sans 
+connaître au moment du codage leur type spécifique.\\
+Liaisons dynamiques (def du dessus)\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Objet}
+\begin{block}{Defini par }
+Ses variables d'instance\\
+Son comportement (methodes)\\
+\end{block}
+\begin{block}{Classe}
+Constructeur qui defini l'objet (moule)\\
+\end{block}
+\begin{block}{This}
+"this" fais reference a l'objet dans lequel le code ce situe\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Garbage Collector}
+\begin{block}{Rammasse miettes}
+Permet la desallocation memoire des objets\\
+C'est automatique\\
+on peut definir un comportement avant son execution en imlpementant la fontion \\
+public void finalise()\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Casting}
+\begin{block}{Upcating}
+List list = new LinkedList();\\
+\end{block}
+\begin{block}{Downcating}
+...(List) list; (cast classique)\\
+\end{block}
+\begin{block}{Nom}
+Transtypage\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Controle d'acces}
+\begin{block}{Static}
+Une variable static est commune a tout les objets de cette classe\\
++- locales\\
+Les methodes aussi peuvent etre static\\
+\end{block}
+\end{frame}
+\begin{block}{Abstract}
+Une classe abstraite ne peut pas crée directement d'objet\\
+Permet de definir un etat par default, et un comportement generique\\
+\begin{frame}
+\frametitle{Tableau}
+\end{block}
+\begin{block}{Utilisation}
+Les indices des tableaux commencent à 0\\
+Taille : tableau.length\\
+lève une ArrayIndexOutOfBoundsException si hors limites\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Chaines}
+\begin{block}{Intro}
+La classe String ne permet pas de modifier la chaine\\
+La classe StringBuffer elle le permet\\
+la méthode length retourne le nombre de caractère dans la chaîne\\
+la méthode charAt retourne le caractère situé à la position donnée\\
+indexOf(char ch) -> trouver la position de la premiere occurence de ch\\
+indexOf(char ch, int start) : première position de ch >= start\\
+\end{block}
+\end{frame}
+indexOf(String str) : première position de str\\
+String substring(int begIndex, int endIndex)\\
+\begin{frame}
+\frametitle{Interfaces}
+\begin{block}{Classe}
+Classe abstraite, ou tout les methodes sont abstraites\\
+Une classe peut implementer plusieurs interfaces\\
+Une interface peut heriter d'une autre interface\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Exceptions}
+\begin{block}{Intro}
+Lancer, ou lever ou exception signifie envoier un signal particulier au bloc superieur\\
+qui pourra la traiter, ou bien la renvoyer au bloc superieur\\
+une classe succesptible de lever une exception doit le preciser dans son entete grace au mot throws\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{}
+\begin{block}{Quelques exceptions}
+ArithmeticException -> division par zero\\
+NullPointerException->reference nulle\\
+ClassCastException -> tentative de cast illegal\\
+NegativeArraySizeException -> creation tableau de taille negative\\
+ArrayIndexOutOfBoundsException-> depassement limite d'un tableau\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Capturer/Lever}
+\begin{block}{Capturer}
+on execute le code dans un bloc try{}\\
+on declare un catch(Exception e){}\\
+qui traite l'exception recu\\
+\end{block}
+\begin{block}{Lever}
+On utilise throw(Exception) pour lever une exception\\
+\end{block}
+\begin{block}{Finaly}
+On peut declarer plusieur catch, et si aucun correspond, on declare un finally\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Creation exception}
+\begin{block}{Type}
+Error sont les throwable grave, il ne faut pas les capturer\\
+Exceptions sont les exception courantes\\
+\end{block}
+\begin{block}{Redefinition}
+On fait heriter de Throwable un objet qui doit se comporter comme une exception\\
+On utilise la fonction getMessage pour modifier le message qui apparait si l'exception n'est pas capturée\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Collections}
+\begin{block}{Intro}
+Groupe d'elements uniques -> Collection\\
+ou Set\\
+Ensemble de paires clés-valeurs -> Map\\
+(tableaux de hachages)\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{List}
+\begin{block}{LinkedList}
+liste lié de voisins en voisins\\
+optimisé pour des parcours complets\\
+\end{block}
+\begin{block}{ArrayList}
+Optimisé pour les acces aléatoires\\
+\end{block}
+\begin{block}{List}
+defini les methodes add, et remove\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Iterateur}
+\begin{block}{Iterator}
+On peut acceder aux elements grace a un iterateur\\
+on le recupere grace a "list.iterator()"\\
+on verifie qu'il y ai un element suivant avec "iterateur.hesNext()"\\
+on saisi l'element suivant grace a "(Cast vers le type presque obligatore)iterateur.next()"\\
+enleve le dernier objet saisi avec .remove\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Comparator}
+\end{frame}
+\begin{frame}
+\frametitle{Comparator}
+\begin{block}{Comparer 2 objets}
+Pour pouvoir comparer 2 objets, il faut un comparateur aproprier\\
+Ainsi la classe doit implementer l'interface comparable\\
+\end{block}
+\begin{block}{Fonctions}
+int compare(Object o1,Object o2)\\
+boolean equals(Object oth)\\
+On a ainsi acces au fonction de base pour comparer, trier, etc\\
+(Definiation d'un ordre naturel)\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Tiger}
+\begin{block}{Amelioration des boucles}
+for(Object element : liste){}\\
+\end{block}
+\begin{block}{Methodes}
+Ajout des methodes a arguments variables\\
+en fonction du type, et du nombre\\
+pour nombre variable d'arg on utilise les "..."\\
+ex "int ... valeurs"\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Scanner}
+\begin{block}{Entree formattes}
+Scanner s = new Scanner(System.in)\\
+s.next()   s.nextInt etc\\
+s.close()\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Liste D'elements avec type}
+\begin{block}{Definition}
+List<String> ls = new ArrayList<String>();\\
+Ainsi plus besoin de caster lors de la recuperation d'un objet\\
+\end{block}
+\end{frame}
+\end{document}

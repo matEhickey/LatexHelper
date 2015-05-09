@@ -1,0 +1,38 @@
+\documentclass[12pt,a4paper,twoside]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{color}
+\usepackage{graphicx}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{fg=black,bg=blue}
+\setbeamertemplate{navigation symbols}{
+      \insertslidenavigationsymbol
+}
+\begin{document}
+\author{Mathias DIDIER}\\
+\title{Takuzu}
+\maketitle
+\begin{frame}
+\frametitle{fr1}
+\begin{block}{blo1}
+feze\\
+\end{block}
+\begin{block}{blo2}
+ezfzef\\
+zfez\\
+ezfze\\
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{fr2}
+\begin{block}{blo3}
+dfzefz\\
+zfeze\\
+\end{block}
+\begin{block}{blo4}
+ferger\\
+ferg\\
+\end{block}
+\end{frame}
+\end{document}
