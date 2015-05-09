@@ -29,7 +29,11 @@ class Previs
 				if(lex.type == "liste")
 					button = Gtk::Button.new("Liste")
 				else 
-					button = Gtk::Button.new(lex.value) 
+					if(lex.type != "image")
+						button = Gtk::Button.new(lex.value) 
+					else
+						button = Gtk::Button.new
+					end
 				end
 				button.signal_connect('clicked'){
 						puts "clic"
@@ -40,8 +44,10 @@ class Previs
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(50000, 00, 300))
 				elsif(lex.type == "secondaire"||lex.type == "block")
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(300, 00, 50000))
-				#elsif(lex.type == "endframe")
-					#button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(15000, 00, 100))
+				elsif(lex.type == "image")
+					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(45000, 55000, 55000))
+					image = Gtk::Image.new(Gdk::Pixbuf.new(lex.image,180,300))
+					button.set_image(image)
 				elsif(lex.type == "liste")
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(32000,3000,32000))
 				else

@@ -1,9 +1,13 @@
 class Lexeme
-	@type	#pour l'instant 3 types : principal,secondaire,texte, d'autres pourront s'ajouter
+	@type	#pour l'instant 5 types : principal,secondaire,texte,liste,image,  d'autres pourront s'ajouter
 	@value
 	@@openFrame = false
 	@@openBlock = false
 	@@langue
+	@taille #taille de l'image
+	@image #chemin de l'image
+	
+	attr_accessor :taille, :image
 	
 	attr_reader :type, :value
 	def initialize(type,value)
@@ -11,6 +15,12 @@ class Lexeme
 		@value = value
 	end
 	
+	def Lexeme.imageNew(taille,image)
+		a = Lexeme.new("image","Image")
+		a.taille = taille
+		a.image = image
+		return a
+	end
 	def Lexeme.langue(langue)
 		@@langue = langue
 	end
@@ -64,7 +74,7 @@ class Lexeme
 	
 	def to_s()
 		chaine = ""
-		if(@@langue == "article")
+		if(@@langue == "article"||@@langue == "book")
 			if(@type == "principal")#1
 				chaine = "\\section{#{@value}}\n"
 			elsif(@type == "secondaire")#2
@@ -83,6 +93,8 @@ class Lexeme
 						chaine += "\\item #{item.to_s}"
 					}
 				chaine += "\\end{itemize}\n"
+			elsif(@type == "image")
+				chaine += "\\includegraphics[width=#{@taille}pt]{#{@image}}\\\\ \n"
 			end
 			
 		elsif(@@langue == "beamer")
@@ -96,7 +108,7 @@ class Lexeme
 				if(@@openFrame)
 					chaine += "\\end{frame}\n"
 				end
-				chaine += "\\begin{frame}\n\\frametitle{#{@value}}\n"#1
+				chaine += "\\begin{frame}\n\\frametitle{#{@value}}\n"
 				@@openFrame = true
 				
 				
@@ -120,6 +132,8 @@ class Lexeme
 						chaine += "\\item #{item.to_s}"
 					}
 				chaine += "\\end{itemize}\n"
+			elsif(@type == "image")
+				chaine += "\\includegraphics[width=#{@taille}pt]{#{@image}}\\\\ \n"
 			end
 			
 			
@@ -136,8 +150,11 @@ class Lexeme
 						chaine += "<li>#{item.to_s}</li>"
 					}
 				chaine += "</ul>"
+			elsif(@type == "image")
+				chaine += "<img src=\"#{@image}\" width=\"#{@taille}\"> \n"
 			end
-		end
+		
+		end	
 		
 		
 		#puts chaine

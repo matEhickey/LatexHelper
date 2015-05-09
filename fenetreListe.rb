@@ -87,7 +87,7 @@ class Item < Gtk::Button
 	end
 	
 	def to_s
-		return "\\item #{@value}"
+		return @value
 	end
 	
 end

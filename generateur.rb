@@ -103,6 +103,8 @@ class Generateur < Gtk::Builder
     elsif(@type == "html")
     	@labelSect.label = "Ajouter <h2>"
       @labelSub.label = "Ajouter <h3>"
+     elsif(@type == "book")
+     	puts "book"
   	end
   	
   end
@@ -147,8 +149,11 @@ class Generateur < Gtk::Builder
   def addImage
   	puts "AddImage"
   	if(!@image.nil?)
-  		@pileContenu.push "\\includegraphics[width=#{@tailleImage.value}]{#{@image}}\\\\ \n"
-  		
+  		#@pileContenu.push "\\includegraphics[width=#{@tailleImage.value}]{#{@image}}\\\\ \n"
+  		taille = "#{@tailleImage.value}"
+  		puts "taile = #{taille}"
+  		@pileContenu.push Lexeme.imageNew(taille,@image)
+  		@previs.actualise
   	else
   		@imageChooserButton.set_label "Il faut cliquer ici pour ajouter une image"
   	end
@@ -198,7 +203,7 @@ class Generateur < Gtk::Builder
   	#puts "---------------------------------------------"
   	chaine = ""
   	if((@entryFile.text != ""))
-  		if((@type == "article")||(@type == "beamer"))
+  		if((@type == "article")||(@type == "beamer")||(@type == "book"))
 				file = File.new("#{@entryFile.text}.tex","w+")
 			
 			elsif(@type == "html") #end if type == latex
@@ -211,9 +216,8 @@ class Generateur < Gtk::Builder
   		chaine += Lexeme.init(@titre,@auteur)
   		@pileContenu.each{|lex|
   			if(lex.class.to_s == "Lexeme")
-  				chaine += lex.to_s()
-  			else
-  				chaine += lex	
+  				chaine += lex.to_s
+  			
   			end
   			
   		}
@@ -238,7 +242,7 @@ class Generateur < Gtk::Builder
   
   
   def generateOpen
-  		if(@type == "article"||@type == "beamer")
+  		if(@type == "article"||@type == "beamer"||@type == "book")
 				system "pdflatex #{@entryFile.text}.tex "#> /dev/null"
 				system "gnome-open #{@entryFile.text}.pdf"
 			elsif(@type == "html")
