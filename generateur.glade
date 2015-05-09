@@ -38,7 +38,7 @@
       <object class="GtkTable" id="table1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="n_rows">9</property>
+        <property name="n_rows">10</property>
         <property name="n_columns">3</property>
         <child>
           <object class="GtkLabel" id="label2">
@@ -323,8 +323,8 @@ de presentation</property>
           <packing>
             <property name="left_attach">2</property>
             <property name="right_attach">3</property>
-            <property name="top_attach">7</property>
-            <property name="bottom_attach">8</property>
+            <property name="top_attach">8</property>
+            <property name="bottom_attach">9</property>
           </packing>
         </child>
         <child>
@@ -461,8 +461,8 @@ de presentation</property>
             <property name="label" translatable="yes">Image</property>
           </object>
           <packing>
-            <property name="top_attach">6</property>
-            <property name="bottom_attach">7</property>
+            <property name="top_attach">7</property>
+            <property name="bottom_attach">8</property>
           </packing>
         </child>
         <child>
@@ -543,8 +543,8 @@ de presentation</property>
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
-            <property name="top_attach">6</property>
-            <property name="bottom_attach">7</property>
+            <property name="top_attach">7</property>
+            <property name="bottom_attach">8</property>
           </packing>
         </child>
         <child>
@@ -559,8 +559,8 @@ de presentation</property>
           <packing>
             <property name="left_attach">2</property>
             <property name="right_attach">3</property>
-            <property name="top_attach">6</property>
-            <property name="bottom_attach">7</property>
+            <property name="top_attach">7</property>
+            <property name="bottom_attach">8</property>
           </packing>
         </child>
         <child>
@@ -570,8 +570,8 @@ de presentation</property>
             <property name="label" translatable="yes">Nom du fichier</property>
           </object>
           <packing>
-            <property name="top_attach">7</property>
-            <property name="bottom_attach">8</property>
+            <property name="top_attach">8</property>
+            <property name="bottom_attach">9</property>
           </packing>
         </child>
         <child>
@@ -587,8 +587,8 @@ de presentation</property>
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
-            <property name="top_attach">7</property>
-            <property name="bottom_attach">8</property>
+            <property name="top_attach">8</property>
+            <property name="bottom_attach">9</property>
           </packing>
         </child>
         <child>
@@ -645,8 +645,8 @@ de presentation</property>
             </child>
           </object>
           <packing>
-            <property name="top_attach">8</property>
-            <property name="bottom_attach">9</property>
+            <property name="top_attach">9</property>
+            <property name="bottom_attach">10</property>
           </packing>
         </child>
         <child>
@@ -657,15 +657,9 @@ de presentation</property>
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
-            <property name="top_attach">8</property>
-            <property name="bottom_attach">9</property>
+            <property name="top_attach">9</property>
+            <property name="bottom_attach">10</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
         </child>
         <child>
           <object class="GtkButton" id="button3">
@@ -679,9 +673,45 @@ de presentation</property>
           <packing>
             <property name="left_attach">2</property>
             <property name="right_attach">3</property>
-            <property name="top_attach">8</property>
-            <property name="bottom_attach">9</property>
+            <property name="top_attach">9</property>
+            <property name="bottom_attach">10</property>
           </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label3">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Listes</property>
+          </object>
+          <packing>
+            <property name="top_attach">6</property>
+            <property name="bottom_attach">7</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button4">
+            <property name="label" translatable="yes">Nouvelle liste</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_action_appearance">False</property>
+            <signal name="clicked" handler="newListe" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">6</property>
+            <property name="bottom_attach">7</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>

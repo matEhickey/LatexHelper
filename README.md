@@ -12,17 +12,20 @@ Dans un terminal:
 
 
 #Fonctionnalités presentes
--Modification du type (article, beamer etc)
--Ajout d'image
+-Modification du type (article, beamer, html)
+-Ajout d'image (only latex)
 -Optimisation beamer
--Previsualisation (un lexeme est supprimable, mais la fonctionnalité n'es pas achevé(les fins de clauses sont non suprrimés), ne pas l'utiliser pour un travail serieux, ou retoucher le fichier .tex)
--Sauvegarde/reprise (ctrl+O n'est pas encore fini, il faut taper le nom souhaiter et clicker ouvrir)
+-Previsualisation, et supression d'un ancien lexeme
+-Ajout liste
+-Sauvegarde/reprise 
+	(ctrl+O n'est pas encore fini, il faut taper le nom souhaiter et clicker ouvrir)
+	(Probleme de sauvegarde si liste)
 
 #A faire
--Debuggage supression lexeme (regles hierarchisés, l'ajout de languages sera possible (html etc))
+
 -previsualisation image
 -interdiction de generer si champs non remplis
 -Fommules mathematique
 -Fenetre choix couleurs pour les elements beamer / listes de styles
--Autres elements de styles latex (listes etc)
+-Autres elements de styles latex
 

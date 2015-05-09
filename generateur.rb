@@ -3,7 +3,7 @@ require './AideMemoire.rb'
 require './selecteurDimage.rb'
 require './previs.rb'
 require './Lexeme.rb'
-
+require './fenetreListe.rb'
 
 
 class Generateur < Gtk::Builder
@@ -185,27 +185,13 @@ class Generateur < Gtk::Builder
 		@previs.actualise
 	end
 	
-	def endFrame()
-		if(@openFrame)
-			if(@openBlock)
-				endBlock
-			end
-			lexeme = Lexeme.new("endframe","endframe")
-			@pileContenu.push lexeme
-			
-		end
-		@openFrame = false
-		@buttonEndFrame.hide
-		@previs.actualise
-	end
+
 	
-	def endBlock
-		if(@openBlock)
-			lexeme = Lexeme.new("endblock","endblock")
-			@pileContenu.push lexeme
-			@openBlock = false
-		end
-		@previs.actualise
+	
+	
+	def newListe
+		FenetreListe.new(@pileContenu,@previs)
+		puts "new list"
 	end
   
   def genererCode()

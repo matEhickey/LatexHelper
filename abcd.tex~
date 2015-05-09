@@ -8,20 +8,32 @@
 \setbeamercolor{block title}{fg=black,bg=blue}
 \setbeamertemplate{navigation symbols}{ \insertslidenavigationsymbol}
 \begin{document}
-\title{ezfzefz}
-\author{zedzedz}
+\title{dsfsdfsd}
+\author{dfsdfsd}
 \maketitle
+\end{frame}
 \begin{frame}
 \frametitle{zefzef}
 \begin{block}{ezfze}
 zefzef\\
-\begin{block}{ezfze}
+\end{block}\begin{block}{ezfze}
 zefzef\\
+\end{block}
+\end{frame}
 \begin{frame}
 \frametitle{zefzef}
 \begin{block}{ezfze}
-zefzef\\
-zefzef\\
+\begin{itemize}
+     \item ``That's a great deal to make one 
+     word mean,'' Alice said in a thoughtful tone.
+
+     \item ``When I make a word do a lot of 
+     work like that,'' said Humpty Dumpty,
+     ``I always pay it extra.''
+
+     \item ``Oh!'' said Alice.  She was too much 
+     puzzled to make any other remark.
+     \end{itemize}
 \end{block}
 \end{frame}
 \end{document}

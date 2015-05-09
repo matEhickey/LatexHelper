@@ -26,7 +26,11 @@ class Previs
 		@contenu.each{|lex|
 		
 			if((lex.class.to_s == "Lexeme"))
-				button = Gtk::Button.new(lex.value)
+				if(lex.type == "liste")
+					button = Gtk::Button.new("Liste")
+				else 
+					button = Gtk::Button.new(lex.value) 
+				end
 				button.signal_connect('clicked'){
 						puts "clic"
 						@contenu.delete(lex)
@@ -38,8 +42,8 @@ class Previs
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(300, 00, 50000))
 				#elsif(lex.type == "endframe")
 					#button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(15000, 00, 100))
-				#elsif(lex.type == "endblock")
-					#button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(100, 00, 15000))
+				elsif(lex.type == "liste")
+					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(32000,3000,32000))
 				else
 					button.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(40000, 40000, 40000))
 				end

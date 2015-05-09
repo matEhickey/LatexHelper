@@ -76,6 +76,13 @@ class Lexeme
 				#chaine = "\\end{frame}\n"
 			#elsif(@type == "endblock")
 				#chaine = "\\end{block}\n"
+				
+			elsif(@type == "liste")
+				chaine += "\\begin{itemize}\n"
+					@value.each{|item|
+						chaine += "\\item #{item.to_s}"
+					}
+				chaine += "\\end{itemize}\n"
 			end
 			
 		elsif(@@langue == "beamer")
@@ -107,6 +114,12 @@ class Lexeme
 				
 			elsif(@type == "texte")#3
 				chaine = "#{@value}\\\\\n"
+			elsif(@type == "liste")
+				chaine += "\\begin{itemize}\n"
+					@value.each{|item|
+						chaine += "\\item #{item.to_s}"
+					}
+				chaine += "\\end{itemize}\n"
 			end
 			
 			
@@ -117,6 +130,12 @@ class Lexeme
 				chaine += "<h3>#{@value}</h3>\n"
 			elsif(@type == "texte")#3
 				chaine += "<p>#{@value}</p>\n"
+			elsif(@type == "liste")
+				chaine += "<ul>\n"
+					@value.each{|item|
+						chaine += "<li>#{item.to_s}</li>"
+					}
+				chaine += "</ul>"
 			end
 		end
 		
